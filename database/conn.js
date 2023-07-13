@@ -1,8 +1,16 @@
-import mongoose from 'mongoose';
+import { Sequelize } from 'sequelize';
+import { config } from 'dotenv';
 
-const connect = async() => {
-    await mongoose.connect(process.env.ATLAS_URI);
-    console.log('Database Connected');
-}
+config();
+const db = new Sequelize('lbp_db', 'root', '', {
+    host: 'localhost',
+    dialect: 'mysql',
+});
 
-export default connect;
+db.authenticate().then(() => {
+    console.log(`Database connected to discover`)
+}).catch((err) => {
+    console.log(err)
+})
+
+export default db;

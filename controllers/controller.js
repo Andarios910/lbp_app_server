@@ -1,12 +1,26 @@
+import Questions from "../models/questionModel.js";
+
 
 /** get all questions */
 export const getQuestions = async(req, res) => {
-    res.json('questions api get request');
+    try {
+        // const q = await Questions.find()
+        const q = await Pilihan.findAll();
+        res.json(q);
+    } catch (error) {
+        res.json({ error });
+    }
 }
 
 /** inser all questions */
 export const insertQuestions = async(req, res) => {
-    res.json('questions api post request')
+    try {
+        Questions.insertMany({ questions : [0], answers : [1] }, function(err, data){
+            res.json({ msg: "Data Saved Successfully..." });
+        });
+    } catch (error) {
+        res.json({ error });
+    }
 }
 
 /** delete all questions */

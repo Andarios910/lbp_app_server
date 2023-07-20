@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import session from 'express-session';
 import { config } from 'dotenv';
+import SequelizeStore from 'connect-session-sequelize';
 
 /** Router */
 import questionRouter from './router/questionsRouter.js';
@@ -15,6 +16,12 @@ import db from './database/conn.js';
 
 const app = express()
 
+const sessionStore = SequelizeStore(session.Store);
+
+const store = new sessionStore({
+    db: db,
+});
+
 /** app middleware */
 app.use(morgan('tiny'));
 app.use(cors());
@@ -25,6 +32,7 @@ app.use(session({
     secret: process.env.SESS_SECRET,
     resave: false,
     saveUninitialized: true,
+    store: store,
     cookie: {
         secure: 'auto',
     }
@@ -42,6 +50,8 @@ app.use('/api', questionRouter);
 app.use('/api', resultRouter);
 app.use('/api', usersRouter);
 app.use('/api', authRouter);
+
+// store.sync(); 
 
 /** start server only when we have valid connection */
 db.sync().then(() => {

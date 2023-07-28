@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize';
 import { config } from 'dotenv';
 
 config();
-const db = new Sequelize('lbp_db', 'root', '', {
+const db = new Sequelize('db_lbp', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
 });

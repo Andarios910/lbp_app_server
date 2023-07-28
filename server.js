@@ -10,6 +10,9 @@ import questionRouter from './router/questionsRouter.js';
 import resultRouter from './router/resultsRouter.js';
 import usersRouter from './router/usersRouter.js';
 import authRouter from './router/authRouter.js';
+import gejalaRouter from './router/gejalaRouter.js';
+import penyakitRouter from './router/penyakitRouter.js';
+import solusiRouter from './router/solusiRouter.js';
 
 /** import connection file */
 import db from './database/conn.js';

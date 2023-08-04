@@ -21,6 +21,14 @@ const Gejala = db.define('gejala', {
         },
     },
 
+    pertanyaan: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: true,
+        }
+    },
+
     cfPakar: {
         type: DataTypes.FLOAT,
         allowNull: false,

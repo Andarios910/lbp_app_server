@@ -11,7 +11,7 @@ export const getPenyakit = async(req, res) => {
 
 export const getPenyakitById = async(req, res) => {
     try {
-        const response = await Penyaki.findOne({
+        const response = await Penyakit.findOne({
             where: {
                 uuid: req.params.id,
             }

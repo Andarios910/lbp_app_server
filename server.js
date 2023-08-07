@@ -53,6 +53,7 @@ app.use('/api', questionRouter);
 app.use('/api', resultRouter);
 app.use('/api', usersRouter);
 app.use('/api', authRouter);
+app.use('/api', solusiRouter);
 
 // store.sync(); 
 
